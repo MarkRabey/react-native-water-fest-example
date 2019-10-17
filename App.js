@@ -2,16 +2,16 @@ import React from 'react';
 import { StyleSheet, View } from 'react-native';
 import {
   GalioProvider,
-  Block,  
-  Text,
-  theme,
+  Block,
 } from 'galio-framework';
+
+import myTheme from './constants/WaterFestTheme';
 
 import Screens from './navigation/Screens';
 
 export default function App() {
   return (
-    <GalioProvider theme={ theme }>
+    <GalioProvider theme={ myTheme }>
       <Block flex>
         <Screens />
       </Block>
