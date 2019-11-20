@@ -1,10 +1,7 @@
 import React from 'react';
-import { Easing, Animated } from 'react-native';
 import { createAppContainer } from 'react-navigation';
 import { createStackNavigator } from 'react-navigation-stack';
 import { createBottomTabNavigator } from 'react-navigation-tabs';
-
-import { Block } from 'galio-framework';
 
 // screens
 import Schedule from '../screens/Schedule';

@@ -4,14 +4,13 @@ import {
   GalioProvider,
   Block,
 } from 'galio-framework';
-
-import myTheme from './constants/WaterFestTheme';
+import WaterFestTheme from './constants/WaterFestTheme';
 
 import Screens from './navigation/Screens';
 
 export default function App() {
   return (
-    <GalioProvider theme={ myTheme }>
+    <GalioProvider theme={ WaterFestTheme }>
       <Block flex>
         <Screens />
       </Block>

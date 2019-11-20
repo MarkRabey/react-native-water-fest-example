@@ -1,19 +1,21 @@
 import React from 'react';
 import { ScrollView, Text, Dimensions, StyleSheet } from 'react-native';
-import { Block, theme } from 'galio-framework';
+import { Block, theme, Card } from 'galio-framework';
 import waterFestTheme from '../constants/WaterFestTheme';
 import Button from '../components/Button';
 import ScreenContainer from '../components/ScreenContainer';
 
 const { width } = Dimensions.get('screen');
 
-export default props => (
-  <ScreenContainer>
-    <Block flex>
-      <Text>Details</Text>
-      <Button onPress={() => props.navigation.navigate('Artists') }>
-        List
-      </Button>
-    </Block>
-  </ScreenContainer>
-);
+export default ({ navigation }) => {
+  const artist = navigation.getParam('artist');
+  return (
+    <ScreenContainer>
+      <Card
+        image={ artist.image }
+        caption={ artist.bio }
+        shadowColor={ waterFestTheme.COLORS.DEFAULT }
+      />
+    </ScreenContainer>
+  );
+}
