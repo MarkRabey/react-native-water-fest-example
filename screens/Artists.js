@@ -1,32 +1,22 @@
 import React, { useState, useEffect } from 'react';
-import { ScrollView, StyleSheet, Dimensions, TouchableOpacity } from 'react-native';
-import { Button, Block, Text, Card, theme, Toast } from 'galio-framework';
-import waterFestTheme from '../constants/WaterFestTheme';
+import { StyleSheet, Dimensions, TouchableOpacity } from 'react-native';
+import { Block, Card, theme } from 'galio-framework';
 import ScreenContainer from '../components/ScreenContainer';
-import { ArtistDetailsModal } from '../components/ArtistDetailsModal';
 import apiService from '../services/apiService';
 const { width } = Dimensions.get('screen');
 
 export default props => {
   const [artists, setArtists] = useState([]);
-  const [stages, setStages] = useState([]);
-  const [showToast, setShowToast] = useState(false);
-  const [showModal, setShowModal] = useState(false);
-  const [selectedArtist, setSelectedArtist] = useState(null);
 
   useEffect(() => {
     const getData = async () => {
       const artistData = await apiService.getData('artists');
-      const stageData = await apiService.getData('stages');
-      const badData = await apiService.getData('kjsdhjkf');
-      
       setArtists(artistData);
-      setStages(stageData);
     }
 
     getData();
   }, []);
-
+  
   return (
     <ScreenContainer>
       <Block flex>
@@ -34,7 +24,7 @@ export default props => {
           artists &&
           artists.map(artist => (
             <TouchableOpacity
-              key={ `${ artist.id }` }
+              key={ `${ artist._id }` }
               onPress={() => { props.navigation.navigate('ArtistDetails', { artist })}}>
               <Card
                 title={ artist.name }
@@ -45,14 +35,6 @@ export default props => {
           ))
         }
       </Block>
-      <ArtistDetailsModal
-        visible={ showModal }
-        artist={ selectedArtist }
-        onClose={() => {
-          setShowModal(false);
-          setSelectedArtist(null);
-        }}
-      />
     </ScreenContainer>
   );
 }

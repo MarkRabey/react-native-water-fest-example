@@ -1,8 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { Text } from 'react-native';
 import { Block, Button, Input } from 'galio-framework';
-import axios from 'axios';
-import qs from 'qs';
 import apiService from '../services/apiService';
 
 export default props => {
@@ -17,13 +15,8 @@ export default props => {
 
   const handleLogout = async () => {
     try {
-      const res = await fetch('http://localhost:4300/users/logout', {
-        headers: {
-          'Authorization': `Bearer ${ token }`,
-        },
-      });
-      setToken(null);
-      apiService.deleteToken();
+      const res = await apiService.logout();
+      setToken(res);
     } catch (error) {
       console.log(error);
     }
