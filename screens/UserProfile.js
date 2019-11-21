@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
-import { Block, Card, theme, Text, Button } from 'galio-framework';
+import { Block, Card, theme, Text } from 'galio-framework';
+import Button from '../components/Button';
 import firebase from '../firebaseConfig';
 import ScreenContainer from '../components/ScreenContainer'; 
 
@@ -12,8 +13,8 @@ export default props => {
 
   firebase.auth().onAuthStateChanged(setUser);
 
-  const goToLogin = () => {
-    props.navigation.navigate('Login');
+  const navigateTo = (route) => {
+    props.navigation.navigate(route);
   }
 
   useEffect(() => {
@@ -22,7 +23,7 @@ export default props => {
       if (firebaseUser) {
         setUser(firebaseUser);
       } else {
-        goToLogin();
+        navigateTo('Login');
       }
     }
   });
@@ -32,9 +33,16 @@ export default props => {
       <Block flex>
         { user && <Text>Signed in with { user.email }</Text> }
         
-        <Button onPress={ user ? handleLogout : goToLogin }>
-          <Text>{ user ? 'Logout' : 'Login' }</Text>
+        <Button onPress={ user ? handleLogout : () => navigateTo('Login') }>
+          { user ? 'Logout' : 'Login' }
         </Button>
+        
+        {
+          user ? null :
+          <Button onPress={ user ? handleLogout : () => navigateTo('SignUp') }>
+            Sign Up
+          </Button>
+        }
       </Block>
     </ScreenContainer>
   );

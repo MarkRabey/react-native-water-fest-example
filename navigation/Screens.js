@@ -9,6 +9,7 @@ import Artists from '../screens/Artists';
 import ArtistDetails from '../screens/ArtistDetails';
 import UserProfile from '../screens/UserProfile';
 import Login from '../screens/Login';
+import SignUp from '../screens/SignUp';
 import Settings from '../screens/Settings';
 
 import Header from '../components/Header';
@@ -51,6 +52,12 @@ const UserStack = createStackNavigator({
     screen: Login,
     navigationOptions: ({ navigation }) => ({
       header: <Header back title="Login" navigation={ navigation } />
+    }),
+  },
+  SignUp: {
+    screen: SignUp,
+    navigationOptions: ({ navigation }) => ({
+      header: <Header back title="Sign Up" navigation={ navigation } />
     }),
   },
 });

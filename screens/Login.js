@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
-import { Block, Text, Input, Button } from 'galio-framework';
+import { Block, Text, Input } from 'galio-framework';
+import Button from '../components/Button';
 import firebase from '../firebaseConfig';
 import ScreenContainer from '../components/ScreenContainer';
 
@@ -15,10 +16,16 @@ export default props => {
   return (
     <ScreenContainer>
       <Block flex>
-        <Input value={ email } onChangeText={ setEmail }  />
-        <Input password viewPass value={ password } onChangeText={ setPassword }  />
+        <Input value={ email } onChangeText={ setEmail } autoCapitalize="none" />
+        <Input password viewPass value={ password } onChangeText={ setPassword }  autoCapitalize="none" />
         <Button onPress={ handleSubmit }>
-          <Text>Submit</Text>
+          Submit
+        </Button>
+      </Block>
+      <Block flex>
+        <Text>Need and account?</Text>
+        <Button onPress={ () => props.navigation.navigate('SignUp') }>
+          Sign Up
         </Button>
       </Block>
     </ScreenContainer>
