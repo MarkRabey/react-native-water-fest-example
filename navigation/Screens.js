@@ -7,6 +7,8 @@ import { createBottomTabNavigator } from 'react-navigation-tabs';
 import Schedule from '../screens/Schedule';
 import Artists from '../screens/Artists';
 import ArtistDetails from '../screens/ArtistDetails';
+import UserProfile from '../screens/UserProfile';
+import Login from '../screens/Login';
 import Settings from '../screens/Settings';
 
 import Header from '../components/Header';
@@ -38,6 +40,21 @@ const ArtistsStack = createStackNavigator({
   },
 });
 
+const UserStack = createStackNavigator({
+  UserProfile: {
+    screen: UserProfile,
+    navigationOptions: ({ navigation }) => ({
+      header: <Header title="User Profile" navigation={ navigation } />
+    }),
+  },
+  Login: {
+    screen: Login,
+    navigationOptions: ({ navigation }) => ({
+      header: <Header back title="Login" navigation={ navigation } />
+    }),
+  },
+});
+
 const SettingsStack = createStackNavigator({
   Settings: {
     screen: Settings,
@@ -53,6 +70,9 @@ const AppStack = createBottomTabNavigator({
   },
   Artists: {
     screen: ArtistsStack,
+  },
+  User: {
+    screen: UserStack,
   },
   Settings: {
     screen: SettingsStack,
