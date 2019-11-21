@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Block, Text, Input } from 'galio-framework';
+import { Block, Text, Input, Toast } from 'galio-framework';
 import Button from '../components/Button';
 import firebase from '../firebaseConfig';
 import ScreenContainer from '../components/ScreenContainer';
@@ -7,13 +7,14 @@ import ScreenContainer from '../components/ScreenContainer';
 export default props => {
   const [ email, setEmail ] = useState('');
   const [ password, setPassword ] = useState('');
+  const [ errorMessage, setErrorMessage ] = useState(null);
 
   const handleSubmit = async () => {
     try {
       await firebase.auth().createUserWithEmailAndPassword(email, password);
       props.navigation.navigate('UserProfile');
     } catch (error) {
-      console.log(error);
+      setErrorMessage('Error');
     }
   }
   
@@ -27,6 +28,9 @@ export default props => {
           Sign Up
         </Button>
       </Block>
+      <Toast isShow={ errorMessage ? true : false } positionIndicator="center" color="warning">
+        { errorMessage }
+      </Toast>
     </ScreenContainer>
   );
 }
