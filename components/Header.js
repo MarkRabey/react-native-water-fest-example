@@ -1,7 +1,6 @@
 import React from 'react';
 import { withNavigation } from 'react-navigation';
 import {
-  TouchableOpacity,
   StyleSheet, 
   Platform, 
   Dimensions,
@@ -9,15 +8,15 @@ import {
 import {
   Button,
   Block, 
-  NavBar, 
-  Text,
+  NavBar,
   theme,
 } from 'galio-framework';
 
 import waterFestTheme from '../constants/WaterFestTheme';
+import { iPhoneX } from '../utils/screen';
 
 const { height, width } = Dimensions.get('window');
-const iPhoneX = () => Platform.OS === 'ios' && (height === 812 || width === 812 || height === 896 || width === 896);
+
 
 const BackButton = ({ goBack }) => (
   <Button

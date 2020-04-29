@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { View, Text, FlatList, ActivityIndicator } from 'react-native';
+import { Text, FlatList, ActivityIndicator } from 'react-native';
 import apiService from '../services/apiService';
 import { Block } from 'galio-framework';
 import Button from '../components/Button';

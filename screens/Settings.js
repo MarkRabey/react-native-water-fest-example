@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { Text } from 'react-native';
+import { NavigationEvents } from 'react-navigation';
 import { Block, Button, Input } from 'galio-framework';
 import apiService from '../services/apiService';
 
@@ -28,6 +29,11 @@ export default props => {
 
   return (
     <Block flex>
+      <NavigationEvents
+        onWillFocus={ () => {
+          console.log('onWillFocus');
+        }}
+      />
       <Text h1>Login</Text>
       <Input
         placeholder="email address"
@@ -40,7 +46,7 @@ export default props => {
         value={ password }
       />
       <Button onPress={ handleSubmit }>
-        <Text>Submit</Text>
+        Submit
       </Button>
       {
         token &&

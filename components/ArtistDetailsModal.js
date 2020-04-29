@@ -1,5 +1,5 @@
 import React from 'react';
-import { View, Text, Modal } from 'react-native';
+import { Text, Modal } from 'react-native';
 import { Block } from 'galio-framework';
 import Button from './Button';
 

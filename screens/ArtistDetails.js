@@ -1,8 +1,7 @@
 import React from 'react';
-import { ScrollView, Text, Dimensions, StyleSheet } from 'react-native';
-import { Block, theme, Card } from 'galio-framework';
+import { Dimensions } from 'react-native';
+import { Card } from 'galio-framework';
 import waterFestTheme from '../constants/WaterFestTheme';
-import Button from '../components/Button';
 import ScreenContainer from '../components/ScreenContainer';
 
 const { width } = Dimensions.get('screen');
